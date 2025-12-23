@@ -11,6 +11,9 @@
 
         body {
             font-family: 'Sarabun', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .hero {
@@ -28,24 +31,17 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">MARATHON 2025</a>
-            <div class="ms-auto">
-                <a class="btn btn-outline-light btn-sm" href="admin_list.php">ผู้ดูแลระบบ</a>
-            </div>
-        </div>
-    </nav>
+
+    <?php include 'navbar.php'; ?>
 
     <section class="hero">
         <div>
             <h1 class="display-1 fw-bold">MARATHON 2025</h1>
             <p class="fs-3">วิ่งเปลี่ยนชีวิต พิชิตเส้นชัย</p>
-            <a href="register.html" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold mt-3">สมัครวิ่งเลย!</a>
+            <a href="register.php" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold mt-3">สมัครวิ่งเลย!</a>
             <a href="check_status.php"
                 class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill mt-3 ms-2">เช็คสถานะ</a>
         </div>
     </section>
-</body>
 
-</html>
+    <?php include 'footer.php'; ?>
