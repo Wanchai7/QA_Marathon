@@ -3,11 +3,38 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+<style>
+    /* ปรับแต่งสำหรับมือถือ */
+    @media (max-width: 768px) {
+        h1.display-1 {
+            font-size: 2.5rem !important;
+        }
+
+        h1 {
+            font-size: 1.8rem !important;
+        }
+
+        .hero,
+        .hero-header {
+            height: 300px !important;
+            background-attachment: scroll !important;
+        }
+
+        .main-form-container {
+            margin-top: -30px !important;
+            padding: 20px !important;
+        }
+
+        .btn-lg {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="index.php">
-            <i class="bi bi-person-running"></i> CITY MARATHON
-        </a>
+        <a class="navbar-brand fw-bold" href="index.php"><i class="bi bi-person-running"></i> CITY MARATHON</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,26 +46,18 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <?php if ($_SESSION['role'] == 'admin'): ?>
-                        <li class="nav-item">
-                            <a class="nav-link text-warning fw-bold" href="admin_list.php">
-                                <i class="bi bi-speedometer2"></i> แผงควบคุม (Admin)
-                            </a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link text-warning fw-bold" href="admin_list.php">Admin Panel</a></li>
                     <?php else: ?>
                         <li class="nav-item"><a class="nav-link disabled" href="#">สวัสดี,
                                 <?php echo htmlspecialchars($_SESSION['username']); ?></a></li>
                     <?php endif; ?>
-
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-outline-danger btn-sm rounded-pill px-3" href="logout.php">ออกจากระบบ</a>
-                    </li>
+                    <li class="nav-item ms-2"><a class="btn btn-outline-danger btn-sm rounded-pill px-3"
+                            href="logout.php">ออกจากระบบ</a></li>
                 <?php else: ?>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-outline-light btn-sm rounded-pill px-3" href="login.php">เข้าสู่ระบบ</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-primary btn-sm rounded-pill px-3" href="register_member.php">สมัครสมาชิกเว็บ</a>
-                    </li>
+                    <li class="nav-item ms-2"><a class="btn btn-outline-light btn-sm rounded-pill px-3"
+                            href="login.php">เข้าสู่ระบบ</a></li>
+                    <li class="nav-item ms-2"><a class="btn btn-primary btn-sm rounded-pill px-3"
+                            href="register_member.php">สมัครสมาชิก</a></li>
                 <?php endif; ?>
             </ul>
         </div>

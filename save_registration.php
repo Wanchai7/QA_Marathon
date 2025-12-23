@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $catId = $_POST['รหัสประเภท'];
     $runnerType = $_POST['ประเภทนักวิ่ง'];
 
-    // Logic ราคาง่ายๆ (ในระบบจริงควร Query จาก DB)
     $priceId = 1;
     if ($runnerType == 'ผู้สูงอายุ')
         $priceId = 2;
@@ -25,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $shirtSize = $_POST['ไซส์เสื้อ'];
 
     $conn->begin_transaction();
-
     try {
         $sql_runner = "INSERT INTO `นักวิ่ง` (`ชื่อจริง`, `นามสกุล`, `เลขบัตรประชาชน`, `วันเกิด`, `เพศ`, `เบอร์โทรศัพท์`, `อีเมล`, `โรคประจำตัว`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt1 = $conn->prepare($sql_runner);
@@ -40,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $conn->commit();
         echo "<script>alert('ลงทะเบียนสำเร็จ!'); window.location.href='index.php';</script>";
-
     } catch (Exception $e) {
         $conn->rollback();
         echo "Error: " . $e->getMessage();

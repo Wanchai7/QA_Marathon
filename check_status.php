@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ตรวจสอบสถานะ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -19,9 +20,7 @@
 </head>
 
 <body>
-
     <?php include 'navbar.php'; ?>
-
     <div class="container mt-5 mb-5 flex-grow-1">
         <div class="card shadow-sm mx-auto" style="max-width: 600px;">
             <div class="card-body p-4">
@@ -32,7 +31,6 @@
                         <button class="btn btn-primary" type="submit">ค้นหา</button>
                     </div>
                 </form>
-
                 <?php
                 if (isset($_GET['search'])) {
                     $search = $_GET['search'];
@@ -44,14 +42,9 @@
                     $stmt->bind_param("s", $search);
                     $stmt->execute();
                     $result = $stmt->get_result();
-
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            echo "<div class='alert alert-success mt-3'>";
-                            echo "<h5>คุณ " . $row['ชื่อจริง'] . " " . $row['นามสกุล'] . "</h5>";
-                            echo "<p>รายการ: <strong>" . $row['ชื่อรายการ'] . "</strong></p>";
-                            echo "<p>สถานะ: <span class='badge bg-warning text-dark'>" . $row['สถานะ'] . "</span></p>";
-                            echo "</div>";
+                            echo "<div class='alert alert-success mt-3'><h5>คุณ {$row['ชื่อจริง']} {$row['นามสกุล']}</h5><p>รายการ: <strong>{$row['ชื่อรายการ']}</strong></p><p>สถานะ: <span class='badge bg-warning text-dark'>{$row['สถานะ']}</span></p></div>";
                         }
                     } else {
                         echo "<div class='alert alert-danger mt-3 text-center'>ไม่พบข้อมูลการสมัคร</div>";
@@ -61,5 +54,4 @@
             </div>
         </div>
     </div>
-
     <?php include 'footer.php'; ?>
