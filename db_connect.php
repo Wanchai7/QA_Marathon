@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "marathon"; // ตรวจสอบชื่อ DB ให้ตรงกับของคุณ
+$dbname = "race_db"; // ตรวจสอบชื่อ DB ให้ตรงกับของคุณ
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 $conn->set_charset("utf8mb4");
